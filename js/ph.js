@@ -19,11 +19,39 @@ const displayVideos = (videos) => {
     videos.forEach(video => {
         const videoCard = document.createElement('div');
         videoCard.classList = `card bg-gray-100 p-4 shadow-xl`
-        videoCard.innerHTML = `
-        <figure><img src="${video.thumbnail}" alt="" /></figure>
-        <div class="card-body">
-            <h2 class="card-title">${video.title}</h2>
-        </div>`
+        if (video.authors[0].verified === true) {
+            videoCard.innerHTML = `
+            <figure><img src="${video.thumbnail}" alt="" /></figure>
+            <div class="flex gap-3">
+                <div>
+                    <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
+                </div>
+                <div class="mt-4">
+                    <h2 class="font-bold text-base">${video.title}</h2>
+                    <div class="flex gap-2">
+                        <p class="font-normal text-sm text-[#171717B3]">${video.authors[0].profile_name}</p>
+                        <img src="verified.png" alt="" />
+                    </div>    
+                    <p class="font-normal text-sm text-[#171717B3]">${video.others.views} views</p>
+                </div>
+            </div>
+        `
+        }
+        else{
+            videoCard.innerHTML = `
+            <figure><img src="${video.thumbnail}" alt="" /></figure>
+            <div class="flex gap-3">
+                <div>
+                    <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
+                </div>
+                <div class="mt-4">
+                    <h2 class="font-bold text-base">${video.title}</h2>
+                    <p class="font-normal text-sm text-[#171717B3]">${video.authors[0].profile_name}</p>
+                    <p class="font-normal text-sm text-[#171717B3]">${video.others.views} views</p>
+                </div>
+            </div>
+        `
+        }
         videoContainer.appendChild(videoCard);
     });
 }
@@ -51,8 +79,8 @@ function displayOops() {
         </div>
     </div>
     `
-    
+
     oopsContainer.appendChild(oopsPic);
 }
 
-// loadVideo();
+// loadVideo(1000);

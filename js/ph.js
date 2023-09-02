@@ -20,9 +20,13 @@ const displayVideos = (videos) => {
         const videoCard = document.createElement('div');
         videoCard.classList = `card bg-gray-100 p-4 shadow-xl`
         if (video.authors[0].verified === true) {
+            if(video.others.posted_date != ''){
             videoCard.innerHTML = `
             <div class="">
-                <figure><img src="${video.thumbnail}" alt="" /></figure>
+                <figure class="relative">
+                    <img src="${video.thumbnail}" alt="" />
+                    <p id="time" class="p-2 text-xs bottom-[12px] right-[12px] absolute font-normal text-white bg-[#171717] rounded">${video.others.posted_date ? returnTime(video.others.posted_date):''} </p>
+                </figure>
                 <div class="flex gap-3">
                     <div>
                         <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
@@ -37,12 +41,39 @@ const displayVideos = (videos) => {
                     </div>
                 </div>
             </div>
-        `
+        `}
+            else{
+                videoCard.innerHTML = `
+                <div class="">
+                    <figure class="relative">
+                        <img src="${video.thumbnail}" alt="" />
+                        <p id="time" class="p-2 text-xs bottom-[12px] right-[12px] absolute font-normal text-white rounded">${video.others.posted_date ? returnTime(video.others.posted_date):''} </p>
+                    </figure>
+                    <div class="flex gap-3">
+                        <div>
+                            <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
+                        </div>
+                        <div class="mt-4">
+                            <h2 class="font-bold text-base">${video.title}</h2>
+                            <div class="flex gap-2">
+                                <p class="font-normal text-sm text-[#171717B3]">${video.authors[0].profile_name}</p>
+                                <img src="verified.png" alt="" />
+                            </div>    
+                            <p id="views" class="font-normal text-sm text-[#171717B3]">${video.others.views} views</p>
+                        </div>
+                    </div>
+                </div>
+            `
+            }
         }
         else {
+            if(video.others.posted_date != ''){
             videoCard.innerHTML = `
             <div class="">
-                <figure><img src="${video.thumbnail}" alt="" /></figure>
+                <figure class="relative">
+                    <img src="${video.thumbnail}" alt="" />
+                    <p id="time" class="time p-2 text-xs bottom-[12px] right-[12px] absolute font-normal text-white bg-[#171717] rounded">${video.others.posted_date ? returnTime(video.others.posted_date):''} </p>
+                </figure>
                 <div class="flex gap-3">
                     <div>
                         <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
@@ -54,10 +85,28 @@ const displayVideos = (videos) => {
                     </div>
                 </div>
             </div>
-        `
+        `}
+            else{
+            videoCard.innerHTML = `
+            <div class="">
+                <figure class="relative">
+                    <img src="${video.thumbnail}" alt="" />
+                    <p id="time" class="time p-2 text-xs bottom-[12px] right-[12px] absolute font-normal text-white rounded">${video.others.posted_date ? returnTime(video.others.posted_date):''} </p>
+                </figure>
+                <div class="flex gap-3">
+                    <div>
+                        <img class="mt-3 w-10 h-10 rounded-[40px]" src="${video.authors[0].profile_picture}" alt="" /></figure>
+                    </div>
+                    <div class="mt-4">
+                        <h2 class="font-bold text-base">${video.title}</h2>
+                        <p class="font-normal text-sm text-[#171717B3]">${video.authors[0].profile_name}</p>
+                        <p id="views" class="font-normal text-sm text-[#171717B3]">${video.others.views} views</p>
+                    </div>
+                </div>
+            </div>
+        `}
         }
         videoContainer.appendChild(videoCard);
-
     });
 }
 
@@ -89,7 +138,7 @@ function displayOops() {
 }
 
 
-// loadVideo(1000);
+
 function sortViews() {
     // Get the container of the cards
     const cardContainer = document.getElementById("video-container");
@@ -112,3 +161,14 @@ function sortViews() {
 function blogSite(){
     window.location.href='blog.html';
 }
+
+function returnTime(seconds){
+    const remaining = seconds % 3600;
+    const minutes = parseInt(remaining / 60);
+    const hours = parseInt(seconds / 3600);
+    // document.getElementById('time').createElement();
+    // timeField.classList.add('bg-[#171717]')
+    return `${hours} hrs ${minutes} min ago`;
+}
+
+loadVideo(1000);

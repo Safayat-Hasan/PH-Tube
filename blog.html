@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="mt-5">
+        <h1 class="text-center text-5xl font-bold">Some Common Questions and Answers</h1>
+    </header>
+    <main class="mx-16 mt-16 bg-orange-200 p-5">
+        <div>
+            <h3 class="text-3xl text-red-600 font-semibold">Q1. Discuss the scope of var, let, and const.</h3>
+            <p class="text-3xl mt-4">Ans: The scope of variables defined using var, let, and const in JavaScript is governed by the declarations of those variables. <br>
+                Here's a discussion of the scope for each of these variable declarations: <br>
+                <span class="font-bold">var:</span> <br>i. Variables defined with var are block-scoped, but they can also be function-scoped or globally-scoped. <br>
+                ii. Anywhere in the function, including nested blocks, that a variable specified with the var keyword is accessible. <br>
+                iii. It becomes a global variable and is available throughout the entire program if declared outside of any function or block. <br>
+                iv. Var declarations are elevated to the top of the execution context during the creation phase, allowing you to access them even before they are declared in the contained function or global context. <br>
+                <span class="font-bold">let:</span> <br>i. Let declarations make variables with a block scope, which restricts their accessibility to the block (delimited by curly brackets) in which they are placed. <br>
+                ii. Let variables are not raised to the top of the block like var variables are. Only after their declaration point within the block are they reachable. <br>
+                iii. When a let variable is declared inside of a function, it can only be used inside of that function or nested blocks inside of it. <br>
+                <span class="font-bold">constant:</span> <br>i. Const-declared variables, like let, also have block scope. <br>
+                ii. The main distinction is that once const variables are declared, they must be given a value that cannot be modified or reassigned. <br>
+                iii. Const variables are exclusively usable within the block in which they are defined and, unlike let, are not hoisted. <br>
+                iv. When you declare a variable as const for an object or array, it prevents it from being assigned to a different object or array but allows you to change the object or array's properties or elements.
+                </p>
+        </div>
+        <div>
+            <h3 class="mt-7 text-3xl text-red-600 font-semibold">Q2. Tell us the use cases of null and undefined.</h3>
+            <p class="text-3xl mt-4">Ans: The absence of a value is represented by null and undefined in JavaScript, however they are utilized in somewhat different situations and have various use cases: <br>
+                <span class="font-bold">null:</span> <br>i. <span class="font-semibold">Explicit Absence of Value:</span>The word null is frequently used to expressly denote the absence of a value. It can be applied to a variable or property to denote a purposeful lack of significance. <br>
+                ii. <span class="font-semibold">Checking for Missing Objects:</span>You might occasionally want to determine whether a variable or object has been initialized or set. It's possible to signal that something is purposefully absent or hasn't been assigned by setting it to null. <br>
+                iii. <span class="font-semibold">Clearing Object Properties:</span>You can use null to clear or reset the value of an object property. <br>
+                <span class="font-bold">undefined:</span> <br>i. <span class="font-semibold">Default Initial Value:</span>When a variable is declared but not given a value, its initial value is set to undefined. This can serve as a helpful default value. <br>
+                ii. <span class="font-semibold">Function Parameters:</span>If a function is called with fewer arguments than it expects, the missing arguments are set to undefined. <br>
+                iii. <span class="font-semibold">Property Access:</span>When you access an object property that doesn't exist, it returns undefined. <br>
+                iv. <span class="font-semibold">Return Value:</span>A function inherently returns undefined if it lacks a return statement or returns without a value. <br>
+                </p>
+        </div>
+        <div>
+            <h3 class="mt-7 text-3xl text-red-600 font-semibold">Q3. What do you mean by REST API?</h3>
+            <p class="text-3xl mt-4 mb-16">Ans: Representational State Transfer Application Programming Interface, or REST API, is a set of architectural guidelines and restrictions for creating networked services and applications. It is a method for creating web services that are user-friendly, stateless, and scalable. REST is a set of recommendations for developing APIs rather than a protocol. <br>
+                REST APIs' fundamental tenets and traits include: <br>
+                1. Stateless: Each API call made by a client and answered by a server must include all the details required to comprehend and respond to the request. No past requests from the same client should be used as a basis for the server. REST APIs are hence very scalable and simple to cache. <br>
+                2. Resources: In REST, anything that is an object, a data entity, or a service is regarded as a resource. A URL (Uniform Resource Locator) uniquely identifies each resource. Consider the resources /posts, /comments, and /users in a REST API for a blog. <br>
+                3. Uniform Interface: A uniform and consistent interface is a fundamental aspect of REST. It simplifies interactions between clients and servers. This includes using standard HTTP methods, using resource URLs, and following conventions for data representation (typically in JSON or XML). <br>
+                4. Statelessness: REST APIs, as previously established, are stateless, which means each request made by a client to a server must include all the information required for that server to comprehend and process the request. Between requests, the server doesn't keep track of any client state. <br>
+                5. Representation: Resources can have multiple representations (e.g., JSON, XML, HTML) to allow clients to choose the format they prefer. The client and server should agree on the representation format using the HTTP Accept and Content-Type headers. <br>
+                6. Layered Architecture: REST supports the usage of layered architecture, which enables the addition of various components without compromising the system's main functionality to enhance performance, security, or other factors. <br>
+                7. Stateless Communication: In REST, clients and servers communicate in a way that is stateless, meaning that each request-and-response exchange is separate and the server doesn't keep track of prior requests. <br></p>
+        </div>
+    </main>
+</body>
+</html>

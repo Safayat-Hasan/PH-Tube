@@ -2,6 +2,30 @@ const loadVideo = async (id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
     console.log(data.data);
+    if(id===1000){
+        changeColorOrange(1000);
+        changeColorNormal(1001);
+        changeColorNormal(1003);
+        changeColorNormal(1005);
+    }
+    else if(id===1001){
+        changeColorOrange(1001);
+        changeColorNormal(1000);
+        changeColorNormal(1003);
+        changeColorNormal(1005);
+    }
+    else if(id===1003){
+        changeColorOrange(1003);
+        changeColorNormal(1000);
+        changeColorNormal(1001);
+        changeColorNormal(1005);
+    }
+    else if(id===1005){
+        changeColorOrange(1005);
+        changeColorNormal(1000);
+        changeColorNormal(1001);
+        changeColorNormal(1003);
+    }
     const videos = data.data;
     if (videos.length != 0) {
         displayVideos(videos);
@@ -111,10 +135,16 @@ const displayVideos = (videos) => {
 }
 
 
-function changeColor(id) {
+function changeColorOrange(id) {
     const presentClass = document.getElementById(id);
     presentClass.classList.add('bg-[#FF1F3D]')
     presentClass.classList.add('text-white')
+
+}
+function changeColorNormal(id) {
+    const presentClass = document.getElementById(id);
+    presentClass.classList.remove('bg-[#FF1F3D]')
+    presentClass.classList.remove('text-white')
 
 }
 
